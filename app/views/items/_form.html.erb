@@ -1,0 +1,45 @@
+<%= form_with(model: item, local: true) do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+        <% item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="jumbotron col-md-6">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'w-75'%>
+    </div>
+
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_field :description, class: 'w-75'%>
+    </div>
+
+    <div class="field">
+      <%= form.label :price %>
+      <%= form.text_field :price, class: 'w-75'%>
+    </div>
+
+    <div class="field ">
+      Kategoria:
+      <%= form.collection_select :category_id, Category.all, :id, :name %>
+    </div>
+
+    <div class="field card p-2 w-75">
+      <h5>Dostep w sklepach: <br></h5>
+      <%= form.collection_check_boxes :shop_ids, Shop.all, :id, :name %>
+    </div>
+
+
+    <div class="actions">
+      <%= form.submit class: 'btn btn-info btn-sm w-75'%>
+    </div>
+  </div>
+<% end %>

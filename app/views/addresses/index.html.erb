@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Addresses</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>City</th>
+      <th>Post code</th>
+      <th>Province</th>
+      <th>Streat</th>
+      <th>Home number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.city %></td>
+        <td><%= address.post_code %></td>
+        <td><%= address.province %></td>
+        <td><%= address.streat %></td>
+        <td><%= address.home_number %></td>
+        <td><%= link_to 'Show', address, class: "btn btn-info btn-sm"%></td>
+        <td><%= link_to 'Edit', edit_address_path(address), class: "btn btn-info btn-sm"%></td>
+        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div class="btn btn-warning btn-sm w-75">
+  <%= link_to 'New Address', new_address_path %>
+</div>
